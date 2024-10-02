@@ -53,7 +53,7 @@ function HomePage() {
       <div className="grid grid-cols-5 gap-4">
         {products &&
           products.map((item) => (
-            <div
+            <Link to={`/detail/${item.id}`}
               className="shadow-md border border-[#f9f9f9] rounded-2xl overflow-hidden "
               key={item.id}
             >
@@ -83,7 +83,7 @@ function HomePage() {
                   </p>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
       </div>
       <div className="flex mt-[120px] justify-between border-b border-b-[#EDEDED] pb-4 mb-10  ">
