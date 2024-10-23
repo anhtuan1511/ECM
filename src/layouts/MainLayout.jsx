@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function MainLayout({ children }) {
   return (
@@ -9,9 +10,12 @@ export default function MainLayout({ children }) {
             <div className="flex gap-10">
               <div className="font-bold text-3xl">Logo</div>
               <div className="flex items-center gap-5 font-medium">
-                <a href="Home">Home</a>
-                <a href="About">About</a>
-                <a href="Shop">Shop</a>
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/About">About</NavLink>
+                <NavLink to="/Shop">Shop</NavLink>
+                <NavLink to="/Signup"> Sign up</NavLink>
+                <NavLink to="/Signin">Sign in</NavLink>
+                <NavLink to="/Dashboard"></NavLink>
               </div>
             </div>
             <div>
@@ -180,10 +184,9 @@ export default function MainLayout({ children }) {
                 </li>
               </ul>
             </div>
-
           </div>
           <p className="mt-[80px] border-[#05ABF3] border-t-2 py-[30px] text-center text-xl ">
-          © 2022 All rights reserved. Reliance Retail Ltd.
+            © 2022 All rights reserved. Reliance Retail Ltd.
           </p>
         </div>
       </div>

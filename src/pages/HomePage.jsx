@@ -3,10 +3,12 @@ import { CarouselSize } from "@/components/CarouselSize";
 import axios from "axios";
 
 import { Link } from "react-router-dom";
+import MainLayout from "@/layouts/MainLayout";
+import ProductList from "@/components/ProductList";
 
 function HomePage() {
   const [products, setProducts] = useState();
-  console.log("🚀 ~ HomePage ~ products:", products);
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -23,6 +25,7 @@ function HomePage() {
   }, []);
 
   return (
+    <MainLayout>
     <div className="max-w-[1202px] mx-auto">
       <div className="flex mt-[120px] justify-between border-b border-b-[#EDEDED] pb-4 mb-10  ">
         <h1 className="font-bold text-[#666666]   ">
@@ -274,7 +277,9 @@ function HomePage() {
           </p>
         </div>
       </div>
+    <ProductList/>
     </div>
+    </MainLayout>
   );
 }
 
