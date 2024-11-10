@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import MainLayout from "@/layouts/MainLayout";
 import ProductList from "@/components/ProductList";
+import { Banner } from "@/components/Banner";
 
 function HomePage() {
   const [products, setProducts] = useState();
@@ -27,6 +28,7 @@ function HomePage() {
   return (
     <MainLayout>
     <div className="max-w-[1202px] mx-auto">
+      <Banner/>
       <div className="flex mt-[120px] justify-between border-b border-b-[#EDEDED] pb-4 mb-10  ">
         <h1 className="font-bold text-[#666666]   ">
           Grab the best deal on{" "}
