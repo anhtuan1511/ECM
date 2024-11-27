@@ -1,45 +1,42 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function MainLayout({ children }) {
   return (
     <>
-      <div className="border-b border-b-gray-200 py-5">
+      <div className="border-b border-b-gray-200 py-2">
         <div className="max-w-[1202px] mx-auto">
-          <div className="flex justify-between">
-            <div className="flex gap-10">
-              <div className="font-bold text-3xl">Logo</div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-10">
+              <Link className="font-bold text-3xl"><img className="h-20" src="/logo.png" alt="" /></Link>
               <div className="flex items-center gap-5 font-medium">
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/About">About</NavLink>
-                <NavLink to="/Shop">Shop</NavLink>
-                <NavLink to="/Signup"> Sign up</NavLink>
-                <NavLink to="/Signin">Sign in</NavLink>
-                <NavLink to="/Dashboard"></NavLink>
+                <NavLink to="/">Trang chủ</NavLink>
+                <NavLink to="/About">Sản phẩm</NavLink>
+                <NavLink to="/Shop">Liên hệ</NavLink>
+               
               </div>
             </div>
             <div>
-              <button
-                type="button"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                <svg
-                  className="w-3.5 h-3.5 me-2"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 18 21"
-                >
-                  <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
-                </svg>
-                Cart
-              </button>
+             
+<form className="w-[400px] mx-auto">   
+    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+    <div className="relative">
+        <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
+        </div>
+        <input type="search" id="default-search" className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos..." required />
+        <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+    </div>
+</form>
+
             </div>
           </div>
         </div>
       </div>
-      <div>{children}</div>
-      <div className="bg-[#008ECC] mt-32 text-[#ffff]">
+      <div className="bg-[#f4f7ff] pb-[60px]">{children}</div>
+      <div className="bg-[#008ECC]  text-[#ffff]">
         <div className="max-w-[1202px]  py-20 mx-auto">
           <div className="grid grid-cols-3 gap-24">
             <div className="">

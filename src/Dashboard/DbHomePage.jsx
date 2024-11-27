@@ -9,8 +9,9 @@ import {
 } from "@/components/ui/table";
 import { db } from "@/fireBaseConfig";
 import DbLayout from "@/layouts/DbLayout";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 export default function () {
   const [products, setProducts] = useState([]);
@@ -32,6 +33,30 @@ export default function () {
     };
     Kids();
   }, []);
+  const handleDelete = async (id) => {
+    
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then(async(result) => {
+      if (result.isConfirmed) {
+        try {
+          await deleteDoc(doc(db, "Products", id));
+          setProducts((prevProducts) => 
+          prevProducts.filter((products) => products.id !== id))
+          Swal.fire ("Đã xóa!", "Sản phẩm đã được xóa") , "success" 
+        } catch (error) {
+          console.log("🚀 ~ handleDelete ~ error:", error)
+          
+        }
+      }
+    });
+  }
   return (
     <DbLayout>
       <h2 className="text-[24px] font-bold mt-[41px] mb-[24px]">Dashboard</h2>
@@ -335,7 +360,7 @@ export default function () {
                           />
                         </svg>
                       </div>
-                      <div>
+                      <div onClick={() => handleDelete(item.id)} className="cursor-pointer">
                         <svg
                           width="16"
                           height="16"

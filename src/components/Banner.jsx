@@ -11,7 +11,8 @@ import {
 
 export function Banner() {
   return (
-    <Carousel className="w-full h-[240px] mt-5">
+    <div className="pt-8">
+    <Carousel className="w-full h-[240px] ">
       <CarouselContent>
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem key={index}>
@@ -25,5 +26,6 @@ export function Banner() {
       <CarouselPrevious />
       <CarouselNext />
     </Carousel>
+    </div>
   )
 }
