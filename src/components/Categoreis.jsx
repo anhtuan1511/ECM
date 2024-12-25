@@ -27,9 +27,9 @@ export default function Categoreis() {
   return (
    <div className='bg-white p-[20px] mt-7 rounded-lg'>
     <div className="flex justify-between border-b border-b-[#EDEDED] pb-4 mb-10  ">
-        <h1 className="font-bold text-[#666666]   ">
-          Shop From
-          <span className=" text-[#008ECC]"> Top Categories</span>
+        <h1 className="font-bold text-[#666667] text-2xl   ">
+          Danh mục
+          
         </h1>
         <Link to={""} className="text-base flex items-center gap-2">
           View All

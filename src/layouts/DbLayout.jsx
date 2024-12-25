@@ -5,12 +5,12 @@ export default function DbLayout({ children }) {
   return (
     <>
     
-    <div className="flex">
-      <div className="w-[144px] bg-[#FF8901] h-screen ">
+    <div className="flex ">
+      <div className="w-[144px] bg-[#FF8901] h-screen fixed top-0 left-0 bottom-0 ">
         <h1 className="text-[30px] text-[white] text-center pt-[38px] font-bold ">
           mart
         </h1>
-        <div className="p-[14px] bg-[#ffff] w-fit mx-auto mt-[147px] border rounded-[8px] ">
+        <NavLink to='/Dashboard' className="p-[14px] bg-[#ffff] block w-fit mx-auto mt-6 border rounded-[8px] ">
           <svg
             width="24"
             height="24"
@@ -33,7 +33,7 @@ export default function DbLayout({ children }) {
               stroke-linejoin="round"
             />
           </svg>
-        </div>
+        </NavLink>
         <div className="p-[14px] bg-[#FFB056] w-fit mx-auto border rounded-[8px] mt-7 ">
           <svg
             width="24"
@@ -245,7 +245,7 @@ export default function DbLayout({ children }) {
           </svg>
         </div>
       </div>
-      <div className="bg-[#f8f8f8] px-12 flex-1">
+      <div className="bg-[#f8f8f8] px-12 flex-1 ml-[142px]">
         {children}
         
       </div>

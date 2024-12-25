@@ -11,6 +11,7 @@ import { db } from "@/fireBaseConfig";
 import DbLayout from "@/layouts/DbLayout";
 import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export default function () {
@@ -34,7 +35,6 @@ export default function () {
     Kids();
   }, []);
   const handleDelete = async (id) => {
-    
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -42,25 +42,50 @@ export default function () {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
-    }).then(async(result) => {
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
       if (result.isConfirmed) {
         try {
           await deleteDoc(doc(db, "Products", id));
-          setProducts((prevProducts) => 
-          prevProducts.filter((products) => products.id !== id))
-          Swal.fire ("Đã xóa!", "Sản phẩm đã được xóa") , "success" 
+          setProducts((prevProducts) =>
+            prevProducts.filter((products) => products.id !== id)
+          );
+          Swal.fire("Đã xóa!", "Sản phẩm đã được xóa"), "success";
         } catch (error) {
-          console.log("🚀 ~ handleDelete ~ error:", error)
-          
+          console.log("🚀 ~ handleDelete ~ error:", error);
         }
       }
     });
-  }
+  };
   return (
     <DbLayout>
-      <h2 className="text-[24px] font-bold mt-[41px] mb-[24px]">Dashboard</h2>
-      <div className="grid grid-cols-4 gap-[32px]">
+      <div className="flex items-center justify-between">
+        <h2 className="text-[24px] font-bold mt-[41px] mb-[24px]">Dashboard</h2>
+        <Link to="/addproduct">
+          {" "}
+          <button
+            type="button"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center gap-2 flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Thêm mới
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </button>
+        </Link>
+      </div>
+      <div className="grid grid-cols-4 gap-[32px] my-4">
         <div className="flex items-center justify-center gap-[62px] px-[10px] py-[22px] bg-white shadow-lg  rounded-xl  ">
           <div>
             <p className="text-[#8E95A9] text-[14px]">Revenue</p>
@@ -321,22 +346,18 @@ export default function () {
               products.map((item) => (
                 <TableRow>
                   <TableCell className="font-medium flex items-center  gap-4">
-                    <div className="w-24 h-24 rounded-full overflow-hidden border border-[#ccc] shadow-lg">
-                      <img
-                        className=" object-cover"
-                        src={item?.anhsp}
-                        alt=""
-                      />
+                    <div className="w-24 h-24 min-w-24 max-w-24 rounded-full overflow-hidden border border-[#ccc] shadow-lg">
+                      <img className=" object-cover" src={item?.anhsp} alt="" />
                     </div>
                     <p className="text-sm text-[#555F7E]">{item?.tensp}</p>
                   </TableCell>
                   <TableCell>10-3-2024</TableCell>
-                  <TableCell className="">$250.00</TableCell>
+                  <TableCell className="text-green-500 font-medium">{item?.gia} <sup>đ</sup></TableCell> 
                   <TableCell>78</TableCell>
                   <TableCell>Active</TableCell>
                   <TableCell>
                     <div className="flex gap-5">
-                      <div>
+                      <Link to={`/updateproduct/${item.id}`}>
                         <svg
                           width="16"
                           height="16"
@@ -359,8 +380,11 @@ export default function () {
                             stroke-linejoin="round"
                           />
                         </svg>
-                      </div>
-                      <div onClick={() => handleDelete(item.id)} className="cursor-pointer">
+                      </Link>
+                      <div
+                        onClick={() => handleDelete(item.id)}
+                        className="cursor-pointer"
+                      >
                         <svg
                           width="16"
                           height="16"

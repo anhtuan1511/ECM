@@ -8,6 +8,7 @@ import SignUpPage from "./pages/SignUpPage"
 import SignInPage from "./pages/SignInPage"
 import DbHomePage from "./Dashboard/DbHomePage"
 import AddProduct from "./Dashboard/AddProduct"
+import UpdateProduct from "./Dashboard/UpdateProduct "
 
 
 
@@ -26,6 +27,7 @@ function App() {
         <Route path='/signin' element={<SignInPage/>} />
         <Route path='/Dashboard' element={<DbHomePage/>} />
         <Route path='/addproduct' element={<AddProduct/>} />
+        <Route path='/updateproduct/:id'element={<UpdateProduct/>}/>
 
 
       </Routes>
