@@ -222,10 +222,10 @@ export default function UpdateProduct() {
           </div>
           <div>
             <p className="text-base font-medium mb-2 mt-3">Mô tả sp</p>
-            <input
-              className="border rounded-xl p-4 w-full border-[#131118] mb-[16px]"
+            <textarea
+              className=" h-52 border rounded-xl p-4 w-full border-[#131118] mb-[16px]"
               type="text"
-              placeholder="Mô tả"
+              
               value={mota}
               onChange={(e) => setMota(e.target.value)}
             />
